@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float speed = 5f;
+    public int playerIndex;
+    public static event Action<int> OnAbility;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +22,17 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         var value = context.ReadValue<Vector2>();
-        Debug.Log(value);
-        rb.linearVelocity = value.normalized * value * speed;
+        //Debug.Log(value);
+        rb.linearVelocity = value.normalized * speed;
+    }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        
+        if (context.started)
+        {
+            Debug.Log("interact");
+            OnAbility?.Invoke(playerIndex);
+        }
+        
     }
 }
