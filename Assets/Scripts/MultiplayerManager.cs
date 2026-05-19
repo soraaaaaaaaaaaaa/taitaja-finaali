@@ -7,7 +7,7 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField] PlayerInputManager playerInputManager;
     public List<GameObject> players;
     public float splitScreenDistance = 10f;
-    public Camera cam;
+    public GameObject cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,10 +23,12 @@ public class MultiplayerManager : MonoBehaviour
             if (Vector2.Distance(players[0].transform.position, players[1].transform.position) > splitScreenDistance)
             {
                 playerInputManager.splitScreen = true;
+                cam.SetActive(false);
             }
             else
             {
                 playerInputManager.splitScreen = false;
+                cam.SetActive(true);
                 cam.transform.position = (players[0].transform.position + players[1].transform.position) * 0.5f;
             }
         }
@@ -37,6 +39,7 @@ public class MultiplayerManager : MonoBehaviour
                 cam.transform.position = players[0].transform.position;
             }
             playerInputManager.splitScreen = false;
+            cam.SetActive(true);
         }
         
     }
