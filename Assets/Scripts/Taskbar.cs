@@ -15,8 +15,12 @@ public class Taskbar : MonoBehaviour
         slider.value = percentage;
         if(percentage >= 1f)
         {
-
+            ZoneComplete();
         }
         Debug.Log(percentage * 100f);
+    }
+    void ZoneComplete()
+    {
+        Debug.Log("zone complete");
     }
 }
