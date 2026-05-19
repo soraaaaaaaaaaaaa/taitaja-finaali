@@ -7,6 +7,12 @@ public class Interactable : MonoBehaviour
     int forPlayer;
     [SerializeField]
     protected UnityEvent onAbility;
+    [SerializeField, Range(0, 2)]
+    int zone;
+    private void Start()
+    {
+        ZoneManager.AddTask(zone);
+    }
     protected void OnDisable()
     {
         PlayerController.OnAbility -= OnInteract;
@@ -44,5 +50,8 @@ public class Interactable : MonoBehaviour
     public void PlaceHolderEvent()
     {
         Debug.Log("Placeholder event");
+        ZoneManager.TaskCompleted(zone);
+        gameObject.SetActive(false);
+
     }
 }

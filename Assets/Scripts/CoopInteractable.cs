@@ -12,6 +12,12 @@ public class CoopInteractable : MonoBehaviour
     protected UnityEvent onAbility;
     [SerializeField]
     float timer = 2f;
+    [SerializeField, Range(0,2)]
+    int zone;
+    private void Start()
+    {
+        ZoneManager.AddTask(zone);
+    }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -50,6 +56,8 @@ public class CoopInteractable : MonoBehaviour
     public void PlaceHolderEvent()
     {
         Debug.Log("Co-op placeholder event");
+        ZoneManager.TaskCompleted(zone);
+        gameObject.SetActive(false);
     }
     IEnumerator InteractTimer(int i)
     {
