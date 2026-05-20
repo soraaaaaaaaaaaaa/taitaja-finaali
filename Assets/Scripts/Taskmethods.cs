@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Taskmethods : MonoBehaviour
 {
@@ -56,7 +57,9 @@ public class Taskmethods : MonoBehaviour
     {
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("saw", true);
         MultiplayerManager.instance.playerControllers[1].freeze = true;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].saw);
         yield return new WaitForSeconds(waitTime);
+        
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("saw", false);
         MultiplayerManager.instance.playerControllers[1].freeze = false;
         ZoneManager.TaskCompleted(zone);
@@ -68,6 +71,7 @@ public class Taskmethods : MonoBehaviour
     {
         MultiplayerManager.instance.playerControllers[0].animator.SetBool("water", true);
         MultiplayerManager.instance.playerControllers[0].freeze = true;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].water);
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[0].animator.SetBool("water", false);
         MultiplayerManager.instance.playerControllers[0].freeze = false;
@@ -81,6 +85,7 @@ public class Taskmethods : MonoBehaviour
     {
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", true);
         MultiplayerManager.instance.playerControllers[1].freeze = true;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].plantRemove);
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", false);
         MultiplayerManager.instance.playerControllers[1].freeze = false;
@@ -92,6 +97,7 @@ public class Taskmethods : MonoBehaviour
     {
         MultiplayerManager.instance.playerControllers[0].animator.SetBool("interact", true);
         MultiplayerManager.instance.playerControllers[0].freeze = true;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].plant);
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[0].animator.SetBool("interact", false);
         MultiplayerManager.instance.playerControllers[0].freeze = false;
@@ -104,6 +110,7 @@ public class Taskmethods : MonoBehaviour
     {
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", true);
         MultiplayerManager.instance.playerControllers[1].freeze = true;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].trash);
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", false);
         MultiplayerManager.instance.playerControllers[1].freeze = false;
@@ -118,11 +125,13 @@ public class Taskmethods : MonoBehaviour
         MultiplayerManager.instance.playerControllers[1].freeze = true;
         MultiplayerManager.instance.playerControllers[0].animator.SetBool("interact", true);
         MultiplayerManager.instance.playerControllers[0].freeze = true;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].crafting);
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", false);
         MultiplayerManager.instance.playerControllers[1].freeze = false;
         MultiplayerManager.instance.playerControllers[0].animator.SetBool("interact", false);
         MultiplayerManager.instance.playerControllers[0].freeze = false;
+        MultiplayerManager.instance.playerControllers[1].audioSource.PlayOneShot(MultiplayerManager.instance.playerControllers[1].jingle);
         ZoneManager.TaskCompleted(zone);
         EnableThis(createThis);
         DisableThis(trigger);

@@ -17,10 +17,18 @@ public class PlayerController : MonoBehaviour
     public GameObject bearSprite;
     public bool freeze;
     public Vector2 movementValue;
+    public AudioSource audioSource;
+    public AudioClip water;
+    public AudioClip plant;
+    public AudioClip plantRemove;
+    public AudioClip trash;
+    public AudioClip jingle;
+    public AudioClip saw;
+    public AudioClip crafting;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

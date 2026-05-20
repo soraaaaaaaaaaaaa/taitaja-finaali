@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class MultiplayerManager : MonoBehaviour
 {
+    public AudioClip win;
+    public AudioClip lose;
     [SerializeField] PlayerInputManager playerInputManager;
     public List<GameObject> players;
     public List<PlayerController> playerControllers;
@@ -26,6 +28,7 @@ public class MultiplayerManager : MonoBehaviour
     public GameObject startBounds;
     public GameObject winScreen;
     public GameObject loseScreen;
+    AudioSource audioSource;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -36,6 +39,7 @@ public class MultiplayerManager : MonoBehaviour
         {
             instance = this;
         }
+        audioSource = GetComponent<AudioSource>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -126,6 +130,7 @@ public class MultiplayerManager : MonoBehaviour
         players[0].SetActive(false);
         players[1].SetActive(false);
         timer.gameObject.SetActive(false);
+        audioSource.PlayOneShot(lose);
         loseScreen.SetActive(true);
     }
     public void GameWin()
@@ -133,6 +138,7 @@ public class MultiplayerManager : MonoBehaviour
         players[0].SetActive(false);
         players[1].SetActive(false);
         timer.gameObject.SetActive(false);
+        audioSource.PlayOneShot(win);
         winScreen.SetActive(true);
     }
     public void OnLeave()

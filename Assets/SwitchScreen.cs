@@ -5,6 +5,6 @@ public class SwitchScreen : MonoBehaviour
 {
     public void SwitchScene(string scene)
     {
-        SceneManager.LoadScene("Scene");
+        SceneManager.LoadScene(scene);
     }
 }
