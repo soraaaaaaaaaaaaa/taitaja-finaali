@@ -21,6 +21,11 @@ public class MultiplayerManager : MonoBehaviour
     float width;
     float height;
     public static MultiplayerManager instance;
+    public Timer timer;
+    public GameObject pressToJoin;
+    public GameObject startBounds;
+    public GameObject winScreen;
+    public GameObject loseScreen;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -101,9 +106,34 @@ public class MultiplayerManager : MonoBehaviour
             playerControllers.Add(tempPlayer);
             players.Add(playerInput.gameObject);
         }
-        
-        
-        
+        if (players.Count == 2)
+        {
+            GameStart();
+        }
+
+
+
+
+    }
+    public void GameStart()
+    {
+        startBounds.SetActive(false);
+        pressToJoin.SetActive(false);
+        timer.gameObject.SetActive(true);
+    }
+    public void GameLose()
+    {
+        players[0].SetActive(false);
+        players[1].SetActive(false);
+        timer.gameObject.SetActive(false);
+        loseScreen.SetActive(true);
+    }
+    public void GameWin()
+    {
+        players[0].SetActive(false);
+        players[1].SetActive(false);
+        timer.gameObject.SetActive(false);
+        winScreen.SetActive(true);
     }
     public void OnLeave()
     {

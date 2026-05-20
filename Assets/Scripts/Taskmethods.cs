@@ -48,6 +48,10 @@ public class Taskmethods : MonoBehaviour
     {
         StartCoroutine("Littering");
     }
+    public void Friendship()
+    {
+        StartCoroutine("Together");
+    }
     IEnumerator ChopTree()
     {
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("saw", true);
@@ -103,6 +107,22 @@ public class Taskmethods : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", false);
         MultiplayerManager.instance.playerControllers[1].freeze = false;
+        ZoneManager.TaskCompleted(zone);
+        EnableThis(createThis);
+        DisableThis(trigger);
+        DisableThis(taskCollider);
+    }
+    IEnumerator Together()
+    {
+        MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", true);
+        MultiplayerManager.instance.playerControllers[1].freeze = true;
+        MultiplayerManager.instance.playerControllers[0].animator.SetBool("interact", true);
+        MultiplayerManager.instance.playerControllers[0].freeze = true;
+        yield return new WaitForSeconds(waitTime);
+        MultiplayerManager.instance.playerControllers[1].animator.SetBool("interact", false);
+        MultiplayerManager.instance.playerControllers[1].freeze = false;
+        MultiplayerManager.instance.playerControllers[0].animator.SetBool("interact", false);
+        MultiplayerManager.instance.playerControllers[0].freeze = false;
         ZoneManager.TaskCompleted(zone);
         EnableThis(createThis);
         DisableThis(trigger);

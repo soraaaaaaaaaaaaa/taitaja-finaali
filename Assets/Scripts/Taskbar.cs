@@ -8,6 +8,8 @@ public class Taskbar : MonoBehaviour
     public GameObject healing;
     public GameObject complete;
     float halfCompleted = 0.33f;
+    public Timer timer;
+    public float extraTime = 120f;
     private void Awake()
     {
         ZoneManager.taskbars[index] = this;
@@ -28,6 +30,7 @@ public class Taskbar : MonoBehaviour
     void ZoneComplete()
     {
         complete.SetActive(true);
+        timer.timer += extraTime;
         Debug.Log("zone complete");
     }
 }
