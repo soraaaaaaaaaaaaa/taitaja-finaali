@@ -12,16 +12,34 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField]
     private float smoothTime = 0.1f;
     Camera mainCamera;
+    public float minY;
+    public float maxY;
+    public float minX;
+    public float maxX;
+    public Bounds cameraZone;
+    float width;
+    float height;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCamera = Camera.main;
+        height = mainCamera.orthographicSize;
+        width = height * mainCamera.aspect;
+        SetBounds(cameraZone);
+    }
+    public void SetBounds(Bounds bounds)
+    {
+        minY = bounds.min.y + height;
+        minX = bounds.min.x + width;
+        maxY = bounds.max.y - height;
+        maxX = bounds.max.x - width;
     }
     void LateUpdate()
     {
         if (players.Count == 2)
         {
             var cameraTargetPosition = (players[0].transform.position + players[1].transform.position) * 0.5f; ;
+            cameraTargetPosition = new Vector3(Mathf.Clamp(cameraTargetPosition.x, minX, maxX), Mathf.Clamp(cameraTargetPosition.y, minY, maxY), cameraTargetPosition.z);
             cam.transform.position = Vector3.SmoothDamp(cam.transform.position, cameraTargetPosition, ref cameraPositionSpeed, smoothTime);
             //cam.transform.position = (players[0].transform.position + players[1].transform.position) * 0.5f;
             if (Vector2.Distance(players[0].transform.position, players[1].transform.position) > splitScreenDistance)
@@ -39,7 +57,9 @@ public class MultiplayerManager : MonoBehaviour
         {
             if(players.Count == 1)
             {
-                cam.transform.position = Vector3.SmoothDamp(cam.transform.position, players[0].transform.position, ref cameraPositionSpeed, smoothTime);
+                var cameraTargetPosition = players[0].transform.position;
+                cameraTargetPosition = new Vector3(Mathf.Clamp(cameraTargetPosition.x, minX, maxX), Mathf.Clamp(cameraTargetPosition.y, minY, maxY), cameraTargetPosition.z);
+                cam.transform.position = Vector3.SmoothDamp(cam.transform.position, cameraTargetPosition, ref cameraPositionSpeed, smoothTime);
                 //cam.transform.position = players[0].transform.position;
             }
             playerInputManager.splitScreen = false;
