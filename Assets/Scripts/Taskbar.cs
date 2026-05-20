@@ -6,7 +6,7 @@ public class Taskbar : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField, Range(0, 2)] int index;
     float halfCompleted = 0.33f;
-    private void Start()
+    private void Awake()
     {
         ZoneManager.taskbars[index] = this;
     }
