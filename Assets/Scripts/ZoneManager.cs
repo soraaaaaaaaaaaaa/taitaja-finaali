@@ -7,7 +7,7 @@ public class ZoneManager : MonoBehaviour
     public static int[] zoneTasks = new int[3];
     public static int[] zoneTasksCompleted = new int[3];
     public static Taskbar[] taskbars = new Taskbar[3];
-    public static Taskbar globalTaskBar;
+    //public static Taskbar globalTaskBar;
     public static int allTasks;
     public static int allTasksCompleted;
     public static void AddTask(int i)

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5f;
     public int playerIndex;
     public static event Action<int> OnAbility;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
