@@ -8,38 +8,42 @@ public class MultiplayerManager : MonoBehaviour
     public List<GameObject> players;
     public float splitScreenDistance = 10f;
     public GameObject cam;
+    private Vector3 cameraPositionSpeed;
+    [SerializeField]
+    private float smoothTime = 0.1f;
+    Camera mainCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //playerInputManager.
+        mainCamera = Camera.main;
     }
-
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (players.Count == 2)
         {
-            
+            var cameraTargetPosition = (players[0].transform.position + players[1].transform.position) * 0.5f; ;
+            cam.transform.position = Vector3.SmoothDamp(cam.transform.position, cameraTargetPosition, ref cameraPositionSpeed, smoothTime);
+            //cam.transform.position = (players[0].transform.position + players[1].transform.position) * 0.5f;
             if (Vector2.Distance(players[0].transform.position, players[1].transform.position) > splitScreenDistance)
             {
                 playerInputManager.splitScreen = true;
-                cam.SetActive(false);
+                mainCamera.enabled = false;
             }
             else
             {
                 playerInputManager.splitScreen = false;
-                cam.SetActive(true);
-                cam.transform.position = (players[0].transform.position + players[1].transform.position) * 0.5f;
+                mainCamera.enabled = true;
             }
         }
         else
         {
             if(players.Count == 1)
             {
-                cam.transform.position = players[0].transform.position;
+                cam.transform.position = Vector3.SmoothDamp(cam.transform.position, players[0].transform.position, ref cameraPositionSpeed, smoothTime);
+                //cam.transform.position = players[0].transform.position;
             }
             playerInputManager.splitScreen = false;
-            cam.SetActive(true);
+            mainCamera.enabled = true;
         }
         
     }

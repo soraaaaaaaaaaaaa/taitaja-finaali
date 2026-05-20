@@ -1891,6 +1891,7 @@ MonoBehaviour:
   players: []
   splitScreenDistance: 10
   cam: {fileID: 1869779235}
+  smoothTime: 0.1
 --- !u!114 &1779474701
 MonoBehaviour:
   m_ObjectHideFlags: 0
