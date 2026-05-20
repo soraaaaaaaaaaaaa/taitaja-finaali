@@ -14,9 +14,15 @@ public class CoopInteractable : MonoBehaviour
     float timer = 2f;
     [SerializeField, Range(0,2)]
     int zone;
+    public GameObject canInteractSprite;
     private void Start()
     {
         ZoneManager.AddTask(zone);
+    }
+    private void OnDisable()
+    {
+        PlayerController.OnAbility -= OnInteract;
+        canInteractSprite.SetActive(false);
     }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +32,7 @@ public class CoopInteractable : MonoBehaviour
             if (currentPlayers == requiredPlayers)
             {
                 PlayerController.OnAbility += OnInteract;
+                canInteractSprite.SetActive(true);
             }
         }
     }
@@ -35,6 +42,7 @@ public class CoopInteractable : MonoBehaviour
         {
             currentPlayers--;
             PlayerController.OnAbility -= OnInteract;
+            canInteractSprite.SetActive(false);
         }
     }
     public void OnInteract(int player)

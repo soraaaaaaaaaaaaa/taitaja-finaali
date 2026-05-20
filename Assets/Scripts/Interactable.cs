@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
     protected UnityEvent onAbility;
     [SerializeField, Range(0, 2)]
     int zone;
+    public GameObject canInteractSprite;
     private void Start()
     {
         ZoneManager.AddTask(zone);
@@ -16,6 +17,7 @@ public class Interactable : MonoBehaviour
     protected void OnDisable()
     {
         PlayerController.OnAbility -= OnInteract;
+        canInteractSprite.SetActive(false);
     }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +27,7 @@ public class Interactable : MonoBehaviour
             if(playerController.playerIndex == forPlayer)
             {
                 PlayerController.OnAbility += OnInteract;
+                canInteractSprite.SetActive(true);
             }
             
         }
@@ -37,6 +40,7 @@ public class Interactable : MonoBehaviour
             if (playerController.playerIndex == forPlayer)
             {
                 PlayerController.OnAbility -= OnInteract;
+                canInteractSprite.SetActive(false);
             }
         }
     }
