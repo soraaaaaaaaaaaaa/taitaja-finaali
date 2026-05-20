@@ -9,6 +9,7 @@ public class Taskmethods : MonoBehaviour
     //public GameObject enableThis;
     public GameObject trigger;
     public GameObject taskCollider;
+    public GameObject createThis;
     public float waitTime = 1f;
     public float comebackTime = 5f;
     bool doing;
@@ -31,14 +32,30 @@ public class Taskmethods : MonoBehaviour
     {
         StartCoroutine("ChopTree");
     }
+    public void WaterPlant()
+    {
+        StartCoroutine("Water");
+    }
     IEnumerator ChopTree()
     {
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("saw", true);
         yield return new WaitForSeconds(waitTime);
         MultiplayerManager.instance.playerControllers[1].animator.SetBool("saw", false);
         ZoneManager.TaskCompleted(zone);
+        EnableThis(createThis);
         DisableThis(trigger);
         DisableThis(taskCollider);
+    }
+    IEnumerator Water()
+    {
+        MultiplayerManager.instance.playerControllers[0].animator.SetBool("water", true);
+        yield return new WaitForSeconds(waitTime);
+        MultiplayerManager.instance.playerControllers[0].animator.SetBool("water", false);
+        ZoneManager.TaskCompleted(zone);
+        EnableThis(createThis);
+        DisableThis(trigger);
+        DisableThis(taskCollider);
+        
     }
     public void CanComeBack()
     {
