@@ -97,8 +97,8 @@ ScriptedImporter:
   layeredSpriteImportData:
   - name: Taso 6
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.47738507, y: 0.04170862}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -119,8 +119,8 @@ ScriptedImporter:
     spritePosition: {x: 71, y: 42}
   - name: Taso 5
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.49502468, y: 0.043935176}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:

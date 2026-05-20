@@ -5,6 +5,8 @@ public class Taskbar : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField, Range(0, 2)] int index;
+    public GameObject healing;
+    public GameObject complete;
     float halfCompleted = 0.33f;
     private void Awake()
     {
@@ -17,10 +19,15 @@ public class Taskbar : MonoBehaviour
         {
             ZoneComplete();
         }
+        else if(percentage >= halfCompleted)
+        {
+            healing.SetActive(true);
+        }
         Debug.Log(percentage * 100f);
     }
     void ZoneComplete()
     {
+        complete.SetActive(true);
         Debug.Log("zone complete");
     }
 }

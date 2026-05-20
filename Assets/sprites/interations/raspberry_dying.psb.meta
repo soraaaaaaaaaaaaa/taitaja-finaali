@@ -97,8 +97,8 @@ ScriptedImporter:
   layeredSpriteImportData:
   - name: Taso 11
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5211766, y: 0.18080013}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:

@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 7068935280533558371}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 2526586129604171789}
   - component: {fileID: 4844752832624739158}
   - component: {fileID: 9186518528015893055}
-  - component: {fileID: 8311896067954574497}
+  - component: {fileID: 9115146322339424017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -266,6 +266,7 @@ MonoBehaviour:
   sprite: {fileID: 3040931560517739901}
   bunnySprite: {fileID: 3850317314374716880}
   bearSprite: {fileID: 5145717110645549261}
+  freeze: 0
 --- !u!114 &4844752832624739158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,8 +356,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &8311896067954574497
-CircleCollider2D:
+--- !u!61 &9115146322339424017
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -389,8 +390,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.1
+  m_Offset: {x: 0, y: -1.12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.55, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &3641403210692422765
 PrefabInstance:
   m_ObjectHideFlags: 0

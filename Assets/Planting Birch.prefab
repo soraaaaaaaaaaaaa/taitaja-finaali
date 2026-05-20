@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 8560390519014222979}
     - target: {fileID: 7777037822300484263, guid: 2d84a23e25c53ad49b36d90888697a81, type: 3}
       propertyPath: onAbility.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WaterPlant
+      value: GrowPlant
       objectReference: {fileID: 0}
     - target: {fileID: 7777037822300484263, guid: 2d84a23e25c53ad49b36d90888697a81, type: 3}
       propertyPath: onAbility.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
