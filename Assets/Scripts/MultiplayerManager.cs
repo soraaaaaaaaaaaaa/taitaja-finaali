@@ -74,6 +74,16 @@ public class MultiplayerManager : MonoBehaviour
         if (tempPlayer != null)
         {
             tempPlayer.playerIndex = players.Count;
+            if(players.Count == 0)
+            {
+                tempPlayer.animator = tempPlayer.bunnyAnimator;
+                tempPlayer.bearSprite.SetActive(false);
+            }
+            else
+            {
+                tempPlayer.animator = tempPlayer.bearAnimator;
+                tempPlayer.bunnySprite.SetActive(false);
+            }
         }
         players.Add(playerInput.gameObject);
         
