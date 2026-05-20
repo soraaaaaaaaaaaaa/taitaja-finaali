@@ -6,6 +6,7 @@ public class MultiplayerManager : MonoBehaviour
 {
     [SerializeField] PlayerInputManager playerInputManager;
     public List<GameObject> players;
+    public List<PlayerController> playerControllers;
     public float splitScreenDistance = 10f;
     public GameObject cam;
     private Vector3 cameraPositionSpeed;
@@ -19,9 +20,22 @@ public class MultiplayerManager : MonoBehaviour
     public Bounds cameraZone;
     float width;
     float height;
+    public static MultiplayerManager instance;
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         mainCamera = Camera.main;
         height = mainCamera.orthographicSize;
         width = height * mainCamera.aspect;
@@ -84,8 +98,11 @@ public class MultiplayerManager : MonoBehaviour
                 tempPlayer.animator = tempPlayer.bearAnimator;
                 tempPlayer.bunnySprite.SetActive(false);
             }
+            playerControllers.Add(tempPlayer);
+            players.Add(playerInput.gameObject);
         }
-        players.Add(playerInput.gameObject);
+        
+        
         
     }
     public void OnLeave()

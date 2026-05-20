@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Range(0, 1)]
     int forPlayer;
     [SerializeField]
     protected UnityEvent onAbility;

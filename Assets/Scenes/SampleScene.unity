@@ -1781,7 +1781,11 @@ PrefabInstance:
       objectReference: {fileID: 1152726526}
     - target: {fileID: 6897505672644480457, guid: d2bff8397af3b814591f2b4fcc768172, type: 3}
       propertyPath: onAbility.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SawTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897505672644480457, guid: d2bff8397af3b814591f2b4fcc768172, type: 3}
+      propertyPath: onAbility.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Taskmethods, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7022264307317495773, guid: d2bff8397af3b814591f2b4fcc768172, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2617,6 +2621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MultiplayerManager
   playerInputManager: {fileID: 1779474698}
   players: []
+  playerControllers: []
   splitScreenDistance: 10
   cam: {fileID: 1869779235}
   smoothTime: 0.1

@@ -59,4 +59,8 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    public void ChopTree()
+    {
+        animator.SetBool("saw", true);
+    }
 }
