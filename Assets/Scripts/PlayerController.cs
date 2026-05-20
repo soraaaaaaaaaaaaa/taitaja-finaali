@@ -9,7 +9,11 @@ public class PlayerController : MonoBehaviour
     public int playerIndex;
     public static event Action<int> OnAbility;
     public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    public Animator bearAnimator;
+    public Animator bunnyAnimator;
+    public Transform sprite;
+    public GameObject bunnySprite;
+    public GameObject bearSprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +30,24 @@ public class PlayerController : MonoBehaviour
         var value = context.ReadValue<Vector2>();
         //Debug.Log(value);
         rb.linearVelocity = value.normalized * speed;
+        if(value.normalized.x < 0f)
+        {
+            sprite.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else
+        {
+            sprite.localScale = new Vector3(1f, 1f, 1f);
+        }
+        if(value != Vector2.zero)
+        {
+            animator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+        }
+        animator.SetFloat("speedY", value.normalized.y);
+        animator.SetFloat("speedX", speed * 0.8f);
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
